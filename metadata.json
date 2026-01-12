@@ -1,0 +1,7 @@
+{
+  "name": "Mishkan - Jewish Travel Aggregator",
+  "description": "An iPhone-inspired travel planner for Jewish tourists seeking kosher food, synagogues, and sacred sites.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
