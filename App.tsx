@@ -43,7 +43,7 @@ const InAppBrowser: React.FC<{ url: string; onClose: () => void }> = ({ url, onC
 };
 
 const InstallGuide: React.FC<{ onClose: () => void }> = ({ onClose }) => (
-  <div className="fixed bottom-20 left-4 right-4 z-[100] bg-white rounded-3xl shadow-2xl p-6 border border-blue-50 animate-in slide-in-from-bottom-10 duration-500">
+  <div className="fixed bottom-20 left-4 right-4 z-[100] bg-white rounded-3xl shadow-2xl p-6 border border-amber-100 animate-in slide-in-from-bottom-10 duration-500">
     <div className="flex items-start gap-4">
       <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-100">
         <Share size={24} />
@@ -63,7 +63,6 @@ const App: React.FC = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [showInstallGuide, setShowInstallGuide] = useState(false);
   
-  // Custom routing state to bypass issues with react-router-dom module exports
   const [currentPath, setCurrentPath] = useState<string>(() => {
     const hash = window.location.hash.replace('#', '');
     return hash || '/';
@@ -77,7 +76,6 @@ const App: React.FC = () => {
 
     window.addEventListener('hashchange', handleHashChange);
     
-    // Check if should show PWA guide
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     const isStandalone = (window.navigator as any).standalone === true || window.matchMedia('(display-mode: standalone)').matches;
     if (isIOS && !isStandalone) {
@@ -87,7 +85,6 @@ const App: React.FC = () => {
       }
     }
 
-    // Handle connection status
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
     window.addEventListener('online', handleOnline);
@@ -124,7 +121,6 @@ const App: React.FC = () => {
     localStorage.setItem('mishkan_guide_shown', 'true');
   };
 
-  // Simple conditional rendering for routing without external router libraries
   const renderRoute = () => {
     switch (currentPath) {
       case '/':
@@ -148,20 +144,19 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f9fc] safe-area-top selection:bg-blue-100">
+    <div className="min-h-screen bg-[#fdfbf7] safe-area-top selection:bg-blue-100">
       {!isOnline && (
-        <div className="bg-red-500 text-white text-[10px] font-black uppercase tracking-widest py-1 text-center animate-pulse sticky top-0 z-[300]">
+        <div className="bg-orange-600 text-white text-[10px] font-black uppercase tracking-widest py-1 text-center animate-pulse sticky top-0 z-[300]">
           <div className="flex items-center justify-center gap-2">
-            <WifiOff size={10} /> Нет соединения с интернетом
+            <WifiOff size={10} /> Автономный режим
           </div>
         </div>
       )}
       
-      <main className="max-w-lg mx-auto bg-[#f8f9fc] min-h-screen shadow-2xl shadow-slate-200/50">
+      <main className="max-w-lg mx-auto bg-[#fdfbf7] min-h-screen shadow-2xl shadow-stone-200/40">
         {renderRoute()}
       </main>
 
-      {/* Passing currentPath to BottomNav for active state styling */}
       <BottomNav currentPath={currentPath} />
       {showInstallGuide && <InstallGuide onClose={closeGuide} />}
       {browserUrl && <InAppBrowser url={browserUrl} onClose={() => setBrowserUrl(null)} />}

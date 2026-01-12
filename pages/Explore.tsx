@@ -100,11 +100,11 @@ const Explore: React.FC<ExploreProps> = ({ onAddToPlanner, onOpenLink }) => {
   }, [viewMode, results, location]);
 
   return (
-    <div className="pb-24 pt-4 max-w-lg mx-auto min-h-screen bg-[#f8f9fc] flex flex-col">
+    <div className="pb-24 pt-4 max-w-lg mx-auto min-h-screen bg-[#fdfbf7] flex flex-col">
       <header className="px-6 mb-6">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-black text-slate-900 tracking-tight">Мишкан</h1>
-          <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+          <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700">
             <Sparkles size={20} />
           </div>
         </div>
@@ -116,7 +116,7 @@ const Explore: React.FC<ExploreProps> = ({ onAddToPlanner, onOpenLink }) => {
           <input 
             type="text" 
             placeholder="Поиск кошерных мест..."
-            className="w-full h-14 bg-white rounded-2xl pl-12 pr-6 shadow-sm border border-slate-100 focus:ring-4 focus:ring-blue-100/50 transition-all outline-none text-base font-medium placeholder:text-slate-300"
+            className="w-full h-14 bg-white rounded-2xl pl-12 pr-6 shadow-sm border border-stone-200 focus:ring-4 focus:ring-blue-100/50 transition-all outline-none text-base font-medium placeholder:text-slate-300"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -136,7 +136,7 @@ const Explore: React.FC<ExploreProps> = ({ onAddToPlanner, onOpenLink }) => {
           <button 
             key={cat}
             onClick={() => { setQuery(cat); handleSearch(); }}
-            className="px-5 py-2.5 rounded-full text-[13px] font-bold transition-all shadow-sm border bg-white text-slate-600 border-slate-100 hover:border-blue-200 active:scale-95"
+            className="px-5 py-2.5 rounded-full text-[13px] font-bold transition-all shadow-sm border bg-white text-stone-600 border-stone-200 hover:border-blue-200 active:scale-95"
           >
             {cat}
           </button>
@@ -147,7 +147,7 @@ const Explore: React.FC<ExploreProps> = ({ onAddToPlanner, onOpenLink }) => {
         {viewMode === 'list' ? (
           <div className="px-6 space-y-1">
             <div className="flex items-center justify-between mb-4">
-               <h2 className="text-sm font-black text-slate-400 uppercase tracking-widest">
+               <h2 className="text-sm font-black text-stone-400 uppercase tracking-widest">
                  {isSearching ? 'Результаты поиска' : 'Рекомендуемые места'}
                </h2>
                {loading && <div className="animate-spin text-blue-600"><Compass size={16} /></div>}

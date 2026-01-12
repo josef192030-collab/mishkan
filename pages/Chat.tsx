@@ -79,8 +79,8 @@ const Chat: React.FC<ChatProps> = ({ onOpenLink }) => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 max-w-lg mx-auto">
-      <header className="glass p-4 border-b border-slate-200 sticky top-0 z-10 flex items-center gap-3">
+    <div className="flex flex-col h-screen bg-[#fdfbf7] max-w-lg mx-auto">
+      <header className="glass p-4 border-b border-stone-200 sticky top-0 z-10 flex items-center gap-3">
         <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-inner">
           <Sparkles size={20} />
         </div>
@@ -101,8 +101,8 @@ const Chat: React.FC<ChatProps> = ({ onOpenLink }) => {
           >
             <div className={`max-w-[85%] p-4 rounded-2xl shadow-sm text-sm leading-relaxed ${
               msg.role === 'user' 
-                ? 'bg-blue-600 text-white rounded-tr-none' 
-                : 'bg-white text-slate-800 border border-slate-100 rounded-tl-none'
+                ? 'bg-blue-600 text-white rounded-tr-none shadow-blue-100 shadow-lg' 
+                : 'bg-white text-slate-800 border border-stone-200 rounded-tl-none'
             }`}>
               {renderContent(msg.content)}
             </div>
@@ -110,7 +110,7 @@ const Chat: React.FC<ChatProps> = ({ onOpenLink }) => {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-white p-4 rounded-2xl border border-slate-100 flex items-center gap-2">
+            <div className="bg-white p-4 rounded-2xl border border-stone-200 flex items-center gap-2">
               <Loader2 className="animate-spin text-blue-600" size={16} />
               <span className="text-xs font-medium text-slate-500">Советуюсь с источниками...</span>
             </div>
@@ -119,12 +119,12 @@ const Chat: React.FC<ChatProps> = ({ onOpenLink }) => {
         <div ref={scrollRef} />
       </div>
 
-      <div className="p-4 bg-white border-t border-slate-100 safe-area-bottom pb-20">
+      <div className="p-4 bg-white border-t border-stone-100 safe-area-bottom pb-20">
         <form onSubmit={handleSend} className="relative">
           <input 
             type="text"
             placeholder="Спросите о чем угодно..."
-            className="w-full h-12 bg-slate-100 rounded-2xl pl-4 pr-12 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm"
+            className="w-full h-12 bg-stone-100 rounded-2xl pl-4 pr-12 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
